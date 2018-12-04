@@ -1,21 +1,21 @@
-const fs = require("fs");
-const readline = require("readline");
+const fs = require('fs');
+const readline = require('readline');
 
 const genRL = () => {
   return readline.createInterface({
-    input: fs.createReadStream("data.txt"),
-    crlfDelay: Infinity
+    input: fs.createReadStream('data.txt'),
+    crlfDelay: Infinity,
   });
 };
 
 const rl = genRL();
 
-rl.on("line", line => {
+rl.on('line', line => {
   const rl = genRL();
   const len = line.length;
 
   let lineNum = 0;
-  rl.on("line", line2 => {
+  rl.on('line', line2 => {
     let diff = 0;
     let j = 0;
     if (lineNum) {

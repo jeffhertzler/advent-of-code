@@ -1,9 +1,9 @@
-const fs = require("fs");
-const readline = require("readline");
+const fs = require('fs');
+const readline = require('readline');
 
 const rl = readline.createInterface({
-  input: fs.createReadStream("data.txt"),
-  crlfDelay: Infinity
+  input: fs.createReadStream('data.txt'),
+  crlfDelay: Infinity,
 });
 
 const range = (size, startAt = 0) => {
@@ -12,12 +12,12 @@ const range = (size, startAt = 0) => {
 
 let squares = [];
 
-rl.on("line", line => {
+rl.on('line', line => {
   const [match, id, l, t, w, h] = line.match(/^#(.+) @ (.+),(.+): (.+)x(.+)$/);
   squares.push({ id, l, t, w, h });
 });
 
-rl.on("close", () => {
+rl.on('close', () => {
   const coords = squares.reduce(
     ({ vals, repeats }, { l, t, w, h }) => {
       const xs = range(parseInt(w, 10), parseInt(l, 10));

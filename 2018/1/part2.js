@@ -1,5 +1,5 @@
-const fs = require("fs");
-const readline = require("readline");
+const fs = require('fs');
+const readline = require('readline');
 
 let sum = 0;
 let freq = [];
@@ -9,15 +9,15 @@ const add = (i, j) => i + j;
 const sub = (i, j) => i - j;
 
 const read = () => {
-  const input = fs.createReadStream("data.txt");
+  const input = fs.createReadStream('data.txt');
   const rl = readline.createInterface({
     input,
-    crlfDelay: Infinity
+    crlfDelay: Infinity,
   });
 
-  rl.on("line", line => {
+  rl.on('line', line => {
     const [match, sign, num] = line.match(/([+-])(.*)/);
-    const op = sign === "+" ? add : sub;
+    const op = sign === '+' ? add : sub;
     sum = op(sum, parseInt(num, 10));
     if (freq.includes(sum)) {
       input.destroy();
@@ -28,7 +28,7 @@ const read = () => {
     }
   });
 
-  rl.on("close", () => {
+  rl.on('close', () => {
     read();
   });
 };
